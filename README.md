@@ -9,20 +9,29 @@ Installation:
 
 To run this application locally, make sure you have the following dependencies installed:
 
+first create a virtual environment
+python -m venv venv
+
+activate the environment 
+source venv/bin/activate
+
+then clone this repo
+
+install the requirements 
+
 pip install -r requirements.txt
 
-Requirements:
 
-    Streamlit
-    google-generativeai
-    python-dotenv
-    langchain
-    PyPDF2
-    FAISS
-    langchain_google_genai
+
+Setting Up Google API Key:
+    you can create tour api key at makersuite google  https://aistudio.google.com/app/apikey
+    after creating your api key  create a .env file
+    in the .env file add the api key
+    GOOGLE_API_KEY=your_api_key_here(Replace your_api_key_here with your actual Google API key)  
 
 Usage:
 
+you can simply run this application using
 
 streamlit run chat.py
 
