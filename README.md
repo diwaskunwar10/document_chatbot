@@ -7,7 +7,16 @@ Click on "Submit & Process" to process the PDF files and receive a response to y
 
 Installation:
 
-To run this application locally, make sure you have the following dependencies installed:
+pull this repo 
+create and goto folder and initialize git		
+
+	git init
+
+then pull this repo
+
+ 	git pull https://github.com/diwaskunwar10/document_chatbot.git
+  
+To run this application locally, you need to install the required dependence in requirements.txt:
 
 first create a virtual environment
 
@@ -17,18 +26,13 @@ activate the environment
 
 	source venv/bin/activate
 
-then clone this repo
-
 install the requirements 
 
 	pip install -r requirements.txt
 
-
-
 Setting Up Google API Key:
 you can create tour api key at makersuite google  https://aistudio.google.com/app/apikey
 after creating your api key  create a .env file
-	 
   
   	touch .env
   
