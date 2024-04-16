@@ -1,36 +1,40 @@
 This Streamlit application allows you to interactively ask questions based on the content of uploaded PDF files using Gemini, a conversational AI model. Gemini uses Google's Generative AI to generate responses.
 How to Use:
 
-    Upload PDF files using the file uploader.
-    Ask your question in the text input field.
-    Click on "Submit & Process" to process the PDF files and receive a response to your question.
+Upload PDF files using the file uploader.
+Ask your question in the text input field.
+Click on "Submit & Process" to process the PDF files and receive a response to your question.
 
 Installation:
 
 To run this application locally, make sure you have the following dependencies installed:
 
 first create a virtual environment
-	
-     python -m venv venv
+
+	python -m venv venv
 
 activate the environment 
-	
- 	source venv/bin/activate
+
+	source venv/bin/activate
 
 then clone this repo
 
 install the requirements 
 
-    pip install -r requirements.txt
+	pip install -r requirements.txt
 
 
 
 Setting Up Google API Key:
-    you can create tour api key at makersuite google  https://aistudio.google.com/app/apikey
-    after creating your api key  create a .env file
-    in the .env file add the api key
-    						
-		  GOOGLE_API_KEY="your_api_key_here"	(Replace your_api_key_here with your actual Google API key)  
+you can create tour api key at makersuite google  https://aistudio.google.com/app/apikey
+after creating your api key  create a .env file
+	 
+  
+  	touch .env
+  
+in the .env file add the api key
+					
+	GOOGLE_API_KEY="your_api_key_here"(Replace your_api_key_here with your actual Google API key)  
 
 Usage:
 
@@ -41,3 +45,5 @@ you can simply run this application using
 Note:
 
 Ensure you have set up your Google API key in a .env file to utilize Google's Generative AI.
+after starting streamlit you need to fill the form and sumbit to actually go to the chat dashboard 
+
