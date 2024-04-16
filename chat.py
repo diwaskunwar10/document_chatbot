@@ -25,6 +25,7 @@ def get_pdf_text(pdf_docs):
         for page in pdf_reader.pages:
             text += page.extract_text()
     return text
+    
 #splitting extracted documents into chunks using Recursive Character textsplitter from langchain
 def get_text_chunks(text):
     """Split text into smaller chunks."""
@@ -39,6 +40,7 @@ def get_vector_store(chunks):
     vector_store = FAISS.from_texts(chunks, embeddings)
     vector_store.save_local("faiss_index")
     return vector_store
+    
 #setting up lagchain QA chain for user uinput and response adding prompts 
 def get_conversational_chain():
     """Set up a Langchain question-answering chain."""
@@ -70,11 +72,12 @@ def user_input(user_question):
         response = None
 
     return response
-
+#clear chat message from the streamlit session
 def clear_chat_history():
     """Clear the chat history stored in the Streamlit session state."""
     st.session_state.messages = [{"role": "assistant", "content": "upload some pdfs and ask me a question"}]
 
+#this is called if the user query is call me 
 def handle_call_request(user_info):
     """Handle the user's request to receive a call."""
     name = user_info.get("name")
@@ -103,7 +106,7 @@ def handle_call_request(user_info):
         st.write(f"Got it, thanks {name}. I'll make sure someone gives you a call at your number : {phone} at {local_time_str}. "
                 f"The call will be made around {time_30_minutes_ahead_str}. I've also noted your email address: {email}.")
 
-#collecting user infor from the form such as name phone and email with form validation
+#collecting user infor from the form such as name phone and email with form validation only temporary storing in cache
 def collect_user_info():
     """Add a form to the Streamlit UI for user information collection."""
     with st.form("user_info_form"):
@@ -117,7 +120,8 @@ def collect_user_info():
             st.session_state.user_info = user_info
             st.session_state.user_info_submitted = True
             st.rerun()
-
+            
+#main funtion to handle all the frontend using streamlit
 def main():
     """Set up the Streamlit user interface and handle user interactions."""
     st.set_page_config(page_title="Gemini PDF Chatbot", page_icon="🤖")
@@ -188,7 +192,7 @@ def main():
             # Handle "how do you work?" request
             elif "how do you work?" in prompt.lower():
                 with st.chat_message("assistant"):
-                    st.write("I am an AI assistant powered by Langchain and Google Generative AI (Gemini). To use me, first upload your PDF files in the sidebar. Then, you can ask me questions about the content of the documents, and I will provide responses based on the information in the documents. If you ever need to contact me, you can fill out the form in the sidebar with your name, phone number, and email, and I'll make sure someone gets in touch with you.")
+                    st.write("I am an AI assistant powered by Langchain and Google Generative AI (Gemini). To use me, first upload your PDF files in the sidebar and submit . Then, you can ask me questions about the content of the documents, and I will provide responses based on the information in the documents. If you ever need to contact me, you can fill out the form in the sidebar with your name, phone number, and email, and I'll make sure someone gets in touch with you.")
 
             # Handle other user questions
             else:
